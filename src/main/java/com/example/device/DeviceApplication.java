@@ -32,8 +32,7 @@ public class DeviceApplication {
     @Bean
     public MessageProducer inbound() {
         MqttPahoMessageDrivenChannelAdapter adapter =
-                new MqttPahoMessageDrivenChannelAdapter(MqttConstants.MQTT_HOST,MqttConstants.MQTT_CLIENT_ID ,"dev/down/+/00010010020001220161110002000968");
-        adapter.setConverter(new DefaultPahoMessageConverter());
+                new MqttPahoMessageDrivenChannelAdapter(MqttConstants.MQTT_HOST,MqttConstants.MQTT_CLIENT_ID ,"hello");
         adapter.setOutputChannel(new DirectChannel());
         return adapter;
     }
