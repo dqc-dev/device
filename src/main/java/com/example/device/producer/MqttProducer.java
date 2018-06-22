@@ -42,11 +42,4 @@ public class MqttProducer {
         return new DirectChannel();
     }
 
-    @MessagingGateway(defaultRequestChannel = "mqttOutboundChannel")
-    public interface MyGateway {
-
-        void sendToMqtt(String data);
-
-    }
-
 }

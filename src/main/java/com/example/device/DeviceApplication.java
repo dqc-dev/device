@@ -1,6 +1,7 @@
 package com.example.device;
 
 import com.example.device.constants.MqttConstants;
+import com.example.device.producer.MqttGateWay;
 import com.example.device.producer.MqttProducer;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.springframework.boot.SpringApplication;
@@ -32,10 +33,8 @@ public class DeviceApplication {
                 new SpringApplicationBuilder(DeviceApplication.class)
                         .web(false)
                         .run(args);
-        MqttProducer.MyGateway gateway = context.getBean(MqttProducer.MyGateway.class);
-        gateway.sendToMqtt("foo");
-        String s = gateway.receiveMqtt();
-        System.out.println(s);
+        MqttGateWay gateway = context.getBean(MqttGateWay.class);
+        gateway.publish("foo");
     }
 
 

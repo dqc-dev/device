@@ -14,12 +14,12 @@ import org.springframework.messaging.*;
 @Configuration
 public class MqttConsumer {
 
-//    @Bean
+    @Bean
     public MessageChannel mqttInputChannel() {
         return new DirectChannel();
     }
 
-//    @Bean
+    @Bean
     public MessageProducer inbound() {
         MqttPahoMessageDrivenChannelAdapter adapter =
                 new MqttPahoMessageDrivenChannelAdapter(MqttConstants.MQTT_HOST, MqttConstants.MQTT_CLIENT_ID, "topic1");
@@ -33,8 +33,8 @@ public class MqttConsumer {
         return adapter;
     }
 
-//    @Bean
-//    @ServiceActivator(inputChannel = "mqttInputChannel")
+    @Bean
+    @ServiceActivator(inputChannel = "mqttInputChannel")
     public MessageHandler handler() {
         return new MessageHandler() {
 
