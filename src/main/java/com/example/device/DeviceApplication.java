@@ -33,8 +33,19 @@ public class DeviceApplication {
                 new SpringApplicationBuilder(DeviceApplication.class)
                         .web(false)
                         .run(args);
-        MqttGateWay gateway = context.getBean(MqttGateWay.class);
-        gateway.publish("foo");
+        MqttProducer producer = context.getBean(MqttProducer.class);
+        while (true){
+
+            producer.sendMessage("world/cup/france","win");
+
+            try {
+                Thread.sleep(30000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
 
