@@ -1,6 +1,6 @@
 package com.example.device;
 
-import com.example.device.producer.MqttProducer;
+import com.example.device.mqtt.send.MqttMsgPublisher;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -17,10 +17,10 @@ public class DeviceApplication {
                 new SpringApplicationBuilder(DeviceApplication.class)
                         .web(false)
                         .run(args);
-        MqttProducer producer = context.getBean(MqttProducer.class);
+        MqttMsgPublisher publisher = context.getBean(MqttMsgPublisher.class);
         while (true){
 
-            producer.sendMessage("world/cup/france","win");
+            publisher.sendMessage("world/cup/france","play games....");
 
             try {
                 Thread.sleep(30000);
