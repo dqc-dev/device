@@ -1,4 +1,4 @@
-package com.example.device.producer;
+package com.example.device;
 
 import org.springframework.integration.annotation.MessagingGateway;
 
