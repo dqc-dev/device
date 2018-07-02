@@ -18,4 +18,8 @@ public class MqttMsgPublisher {
         mqttPahoMessageHandler.handleMessage(message);
     }
 
+    public void sendMessage(String topic,byte[] payload){
+        Message<byte[]> message = MessageBuilder.withPayload(payload).setHeader(MqttHeaders.TOPIC, topic).build();
+        mqttPahoMessageHandler.handleMessage(message);
+    }
 }
