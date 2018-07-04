@@ -27,15 +27,12 @@ public class DeviceApplication {
                         .run(args);
         MqttMsgPublisher publisher = context.getBean(MqttMsgPublisher.class);
 
-        ByteBuf buffer = Unpooled.buffer();
-        buffer.writeInt(DeviceConnectEnum.CONNECT.getValue());
 
+        byte[] payload = new byte[1];
 
-        byte[] payload = new byte[buffer.writerIndex()];
+        payload[0] =1;
 
-        buffer.readBytes(payload);
-
-        publisher.sendMessage(MqttConstants.MQTT_TOPIC_DEV_UP_CONN+"0001002", payload);
+        publisher.sendMessage(MqttConstants.MQTT_TOPIC_DEV_UP_CONN+"00010010020001220161025001000001", payload);
 
 
 
